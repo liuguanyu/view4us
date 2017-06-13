@@ -12,7 +12,6 @@ def get_fake_headers():
 def retry_http(func):
     def handle(*args, **kwargs):
         max_retry = conf.MAX_RETRY
-        print "in decorator"
         
         ret = ""
 
