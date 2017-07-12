@@ -134,6 +134,7 @@ STATIC_URL = '/static/'
 
 # Crontab
 CRONJOBS = [
-    ('*/5 * * * *', 'view4us.cron.get_teleplay_index'),
-    ('*/5 * * * *', 'view4us.cron.get_teleplay_detail')
+    ('5 11 * * *', 'view4us.cron.get_teleplay_index'),
+    ('5 11 * * *', 'view4us.cron.get_teleplay_detail'),
+    ('5 11 * * *', 'view4us.cron.get_recent_item')
 ]

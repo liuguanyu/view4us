@@ -5,7 +5,8 @@ import json
 import traceback
 
 from spider import baidu as list_vender 
-from spider import dy8 as detail_vender
+from spider import dy8c as detail_vender
+from spider import dy8c as recent_vender
 
 # 电视剧关键字列表
 def get_teleplay_index():
@@ -28,7 +29,15 @@ def get_teleplay_detail():
             keyword, trend, number = [node[key] for key in ("keyword", "trend", "number")]
             
             detail = detail_vender.get_teleplay_search_list(keyword)
-            print detail, i
+            print detail, keyword, i
             #print "\n"
 
     f.close()
+
+# 获取最新列表
+
+def get_recent_item():
+    for i in xrange(1, recent_vender.get_all_page()):
+        print i
+        print "============"
+        list = recent_vender.get_recent_list(i)
