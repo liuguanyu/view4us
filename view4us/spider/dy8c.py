@@ -66,7 +66,6 @@ def _get_desc_in_detail(soup):
 # 2、p+table型：每组链接，以<p>开始，以table为主要内容，其中每个链接包含一个链接（如果
 #    种下载方式、则N个链接）
 def _get_download_code_type(title_dom):
-    print title_dom.find_next_sibling().contents[0], title_dom.find_next_sibling().contents[0].name
     if title_dom.find_next_sibling().contents[0].name == "a":
         return "mpa"
 
@@ -81,14 +80,33 @@ def _get_ptbl_urls(title_dom):
         links = x.find_all("a")
 
         return {
-            "e2dk": links[0]["href"],
-            "thunder": links[1]["href"]
+            "e2dk": {
+                "text": links[0].get_text().encode("utf-8"),
+                "url": links[0]["href"]
+            },    
+            "thunder": {
+                "text": links[1].get_text().encode("utf-8"),
+                "url" : links[1]["href"]
+            }    
         };
     
     return map(lambda x: _get_real_links(x), trs)  
 
 def _get_mpa_urls(title_dom):
-    return []     
+    p = title_dom.find_next_siblings("p")
+
+    if p is None:
+        return []
+
+    def _get_real_links(x):
+        a = x.find("a")
+
+        return {
+            "text": a.get_text().encode("utf-8"),
+            "url": a["href"]
+        }        
+
+    return map(lambda x: _get_real_links(x), p)
 
 def _get_download_urls(soup):
     leading_dom = soup.find(text=DOWNLOAD_LEADING_TEXT)
