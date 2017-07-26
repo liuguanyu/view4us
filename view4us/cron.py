@@ -8,6 +8,9 @@ from spider import baidu as list_vender
 from spider import dy8c as detail_vender
 from spider import dy8c as recent_vender
 
+from tv.models import Tv
+from movie.models import Movie
+
 # 电视剧关键字列表
 def get_teleplay_index():
     url_list = conf.LIST_PLAY_INDEX
@@ -38,6 +41,22 @@ def get_teleplay_detail():
 
 def get_recent_item():
     for i in xrange(1, recent_vender.get_all_page()):
-        print i
-        print "============"
         list = recent_vender.get_recent_list(i)
+        try:
+            for node in list:
+                if node["type"] == "tv":
+                    print node["type"]
+
+                    kargs = {item: node[item] for item in ("title", "desc", "pic", "desc_url")}
+                    tv = Tv(**kargs)
+                    tv.save()
+                # elif node["type"] == "movie":
+                #     print node["type"]
+                #
+                #     kargs = {item: node[item] for item in ("title", "desc", "pic", "desc_url")}
+                #     movie = Movie(**kargs)
+                #     movie.save()
+
+
+        except Exception, e:
+            traceback.print_exc()

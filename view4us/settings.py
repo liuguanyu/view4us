@@ -31,7 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'video.apps.VideoConfig',
     'movie.apps.MovieConfig',
+    'tv.apps.TvConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -90,7 +92,11 @@ DATABASES = {
         'PASSWORD': MYSQL_PASS,
         'HOST': MYSQL_HOST,                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': MYSQL_PORT,                      # Set to empty string for default.
-    }
+        'OPTIONS': {
+            'charset':'utf8'
+        },
+    },
+
 }
 
 
