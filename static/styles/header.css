@@ -1,0 +1,86 @@
+.header {
+    background: #eee;
+}
+
+.header-container {
+    margin: 0 auto;
+
+    width: 1200px;
+    height: 80px;
+}
+
+.header-container .logo-container {
+    display: inline-block;
+
+    margin: 25px 0;
+}
+
+
+.header-container .menu-container .menu {
+    float: right;
+    padding-right: 40px;
+    height: 80px;
+    line-height: 80px;
+
+    font-size: 16px;
+}
+
+.menu li {
+    float: left;
+    padding: 0 10px;
+}
+
+.menu li a {
+    color: #676767;
+    cursor: pointer;
+}
+
+.menu .current a {
+    color: #1db69a;
+}
+
+.search-container {
+    height: 80px;
+    line-height: 80px;
+}
+
+.search-wrap {
+    margin-top: 20px;
+    width: 260px;
+    height: 34px;
+    float: right;
+}
+
+.search {
+    width: 260px;
+    height: 34px;
+    border: 2px solid #1db69a;
+    position: relative;
+}
+
+.search-wrap .keyword {
+    padding: 6px;
+    color: #999;
+    border: none;
+    width: 168px;
+    height: 22px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 14px;
+}
+
+.search-wrap .search-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 34px;
+    color: #fff;
+    background: #1db69a;
+    line-height: 34px;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}

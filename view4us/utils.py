@@ -6,8 +6,10 @@ from bs4 import BeautifulSoup
 
 import conf
 
+
 def get_fake_headers():
     return conf.HEADERS[random.randint(0, len(conf.HEADERS)-1)]
+
 
 def retry_http(func):
     def handle(*args, **kwargs):
@@ -27,8 +29,16 @@ def retry_http(func):
 
     return handle    
 
+
 @retry_http
 def get_html(url, source_charset="utf-8"):
     req = urllib2.Request(url, headers=get_fake_headers())
     source_code = urllib2.urlopen(req, timeout=10).read()
     return BeautifulSoup(source_code, "lxml", from_encoding=source_charset)
+
+
+def split_field_on_object(obj, fields):
+    for field in fields:
+        setattr(obj, field, getattr(obj, field).split(" "))
+
+    return obj

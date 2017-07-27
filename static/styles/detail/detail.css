@@ -1,0 +1,75 @@
+.top-bg {
+    width: 100%;
+    height: 126px;
+
+    background: url(/static/imgs/detail/detail-top-bg.png) center top no-repeat;
+}
+
+.container {
+    margin: 0 auto;
+    width: 1200px;
+}
+
+.desc {
+    margin-top: -90px
+}
+
+.info .pic, .info .pic img{
+    width: 250px;
+    height: 355px;
+
+    float: right;
+}
+
+.info .pic img {
+    border: 1px solid #eee;
+    border-radius: 3px;
+}
+
+.baseinfo {
+    margin-left: 40px;
+    height: 90px;
+}
+
+.baseinfo .title {
+    color: #fff;
+    font-size: 36px;
+}
+
+.baseinfo .categories {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #fff;
+}
+
+.baseinfo .categories a {
+    color: #fff;
+    margin-right: 5px;
+}
+
+.extinfo {
+    margin-left: 40px;
+    font-size: 14px;
+    color: #666;
+}
+
+.extinfo a {
+    color: #333;
+    margin-right: 8px;
+}
+
+.extinfo .intro {
+    color: #999;
+    line-height: 24px;
+    text-indent: 30px;
+}
+
+.extinfo-items {
+    margin-top: 6px;
+}
+
+.extinfo-items .item {
+    display: inline-block;
+    margin-right: 30px;
+    line-height: 26px;
+}

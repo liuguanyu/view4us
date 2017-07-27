@@ -1,0 +1,76 @@
+<!doctype html>
+
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="applicable-device" content="mobile" />
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+    <meta name="google-site-verification" content="_8HdygcGVXev9Q-XSjigJksvwrq93elwgmzuKZCqrbc" />
+    <title>{% block title %}{% endblock %} {{SITE_NAME}}</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static "styles/reset.css" %}"/>
+    <link rel="stylesheet" href="{% static "styles/common.css" %}"/>
+    <link rel="stylesheet" href="{% static "styles/grid.css" %}"/>
+    <link rel="stylesheet" href="{% static "styles/header.css" %}"/>
+
+    {% block page_css %}{% endblock %}
+</head>
+<body>
+    <div class="header">
+        <div class="header-container grid-3c1 clearfix">
+            <div class="logo-container col-1">
+                <a href="/" class="logo">
+                    {% load static %}
+                    <img src="{% static "imgs/logo.png" %}" alt="LOGO"/>
+                </a>
+            </div>
+
+
+            <div class="menu-container col-2">
+                <ul class="menu">
+                    <li>
+                        <a href="">首页</a>
+                    </li>
+
+                    <li class="current">
+                        <a href="">电影</a>
+                    </li>
+
+                    <li>
+                        <a href="">剧集</a>
+                    </li>
+
+                    <li>
+                        <a href="">综艺</a>
+                    </li>
+
+                    <li>
+                        <a href="">关于</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="search-container col-3">
+                <div class="search-wrap">
+                    <div class="search">
+                        <input type="text" class="keyword"/>
+                        <a class="search-btn">搜索</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="doc">
+        {% block content %}{% endblock %}
+    </div>
+
+    <div class="footer">
+
+    </div>
+</body>
+
+</html>

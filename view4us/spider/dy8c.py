@@ -23,7 +23,7 @@ def __get_base_info(soup):
         "导演": "directors",
         "编剧": "scripters",
         "主演": "performers",
-        "类型": "category",
+        "类型": "categories",
         "制片国家/地区": "area",
         "语言": "language",
         "首播": "first_show",
@@ -174,7 +174,7 @@ def __get_fields_info(url):
     base_info = __get_base_info(soup)
     ext_info = {
         "desc": __get_desc_in_detail(soup).encode("utf-8"),
-        "type": __get_node_type(soup),
+        "video_type": __get_node_type(soup),
         "download_urls": __get_download_urls(soup)
     }
 

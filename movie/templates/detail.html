@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %}
+   {{movie.title}}
+{% endblock %}
+
+{% block page_css%}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "styles/detail/detail.css" %}"/>
+{% endblock %}
+
+{% block content %}
+<div class="top-bg"></div>
+
+<div class="container desc">
+    <div class="info grid-2c1 clearfix">
+        <div class="col-1">
+            <div class="pic">
+                <img src="{{movie.pic}}" />
+            </div>
+        </div>
+
+        <div class="col-2">
+            <div class="baseinfo">
+                <div class="title">
+                     {{movie.title}}
+                </div>
+                <div class="categories">
+                     {% for item in movie.categories %}
+                     <a href="">{{item}}</a>
+                     {% endfor %}
+                </div>
+            </div>
+
+            <div class="extinfo">
+                <div class="extinfo-items">
+                    <div class="items">
+                        {% if movie.directors %}
+                        <div class="item">
+                            <span class="field">导演：</span>
+                            <span class="value">
+                                {% for item in movie.directors %}
+                                <a href="">{{item}}</a>
+                                {% endfor %}
+                            </span>
+                        </div>
+                        {% endif %}
+
+                        {% if movie.scripters %}
+                        <div class="item">
+                            <span class="field">编剧：</span>
+                            {% for item in movie.scripters %}
+                            <a href="">{{item}}</a>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+
+                        {% if movie.area %}
+                        <div class="item">
+                            <span class="field">地区：</span>
+                            <a href="">{{movie.area}}</a>
+                        </div>
+                        {% endif %}
+
+                        {% if movie.first_show %}
+                        <div class="item">
+                            <span class="field">首映：</span>
+                            {{movie.first_show}}
+                        </div>
+                        {% endif %}
+
+                        {% if movie.language %}
+                        <div class="item">
+                            <span class="field">语种：</span>
+                            <a href="">{{movie.language}}</a>
+                        </div>
+                        {% endif %}
+
+                        {% if movie.performers %}
+                        <div class="item">
+                            <span class="field">编剧：</span>
+                            {% for item in movie.performers %}
+                            <a href="">{{item}}</a>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="intro">
+                    {{movie.desc}}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -8,7 +8,8 @@ class Video(models.Model):
     title = models.CharField(max_length=255)
     alias = models.CharField(max_length=255)
     pic = models.URLField(max_length=255)
-    category = models.URLField(max_length=255)
+    categories = models.URLField(max_length=255)
+    video_type =  models.CharField(max_length=50)
 
     performers = models.TextField()
     directors = models.TextField()
@@ -26,3 +27,4 @@ class Video(models.Model):
 
     desc_url = models.URLField(max_length=255)
     update_date = models.DateTimeField(auto_now=True)
+

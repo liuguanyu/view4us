@@ -58,7 +58,7 @@ ROOT_URLCONF = 'view4us.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,7 +81,7 @@ MYSQL_HOST = ''
 MYSQL_PORT = '3306'
 MYSQL_USER = 'root'
 MYSQL_PASS = '123456'
-MYSQL_DB   = 'view4us'
+MYSQL_DB = 'view4us'
 
 DATABASES = {
     'default': {
@@ -93,7 +93,7 @@ DATABASES = {
         'HOST': MYSQL_HOST,                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': MYSQL_PORT,                      # Set to empty string for default.
         'OPTIONS': {
-            'charset':'utf8'
+            'charset': 'utf8'
         },
     },
 
@@ -138,9 +138,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS =  [
+    os.path.join(BASE_DIR, "static")
+]
+
 # Crontab
 CRONJOBS = [
-    ('5 11 * * *', 'view4us.cron.get_teleplay_index'),
-    ('5 11 * * *', 'view4us.cron.get_teleplay_detail'),
-    ('5 11 * * *', 'view4us.cron.get_recent_item')
+    # ('5 11 * * *', 'view4us.cron.get_teleplay_index'),
+    # ('5 11 * * *', 'view4us.cron.get_teleplay_detail'),
+    # ('5 11 * * *', 'view4us.cron.get_recent_item')
 ]

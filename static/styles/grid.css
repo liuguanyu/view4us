@@ -1,0 +1,15 @@
+.grid-1c,
+.grid-2c1,
+.grid-2c2,
+.grid-3c1,
+.grid-4c1,
+.grid-5c1{width:100%;margin:0 auto;*zoom:1;}
+
+.row:after{content:"\0020";display:block;height:0;clear:both;visibility:hidden;}
+
+.grid-3c1 .col-1{width:300px;float: left;}
+.grid-3c1 .col-2{width:600px;float: left;}
+.grid-3c1 .col-3{width:300px;float: left;}
+
+.grid-2c1 .col-1{width:300px;float: left;}
+.grid-2c1 .col-2{width:900px;float: left;}
