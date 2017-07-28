@@ -78,7 +78,7 @@
 
                         {% if movie.performers %}
                         <div class="item">
-                            <span class="field">编剧：</span>
+                            <span class="field">演员：</span>
                             {% for item in movie.performers %}
                             <a href="">{{item}}</a>
                             {% endfor %}
@@ -93,6 +93,15 @@
         </div>
 
     </div>
+</div>
+
+<div class="container">
+    <div class="comment">
+        <!-- UY BEGIN -->
+        <div id="uyan_frame"></div>
+        <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2140138"></script>
+    <!-- UY END -->
+   </div>
 </div>
 
 {% endblock %}
