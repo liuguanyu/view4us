@@ -91,7 +91,75 @@
                 </div>
             </div>
         </div>
+    </div>
 
+    <div class="download">
+        <h3>以下内容搜索自互联网的资源，仅供学习：</h3>
+
+        <div class="download_title_container clearfix">
+        {% for item in movie.download_urls %}
+            <span class="download_title{% if forloop.first %} current{% endif %}">
+                {{item.title}}
+            </span>
+        {% endfor %}
+        </div>
+
+        {% for item in movie.download_urls  %}
+        <ul class="links_container{% if not forloop.first %} hide{% endif %}">
+            <li class="control">
+                <label>
+                    <input type="checkbox" class="check_all"> 全选
+                </label>
+
+                <a href=""><i class="fa fa-copy"></i>批量复制链接</a>
+            </li>
+
+            {% for link in item.links  %}
+               <li>
+                   {% if link.e2dk and link.thunder %}
+                   <label>
+                        <input type="checkbox" class="item_checker"/>
+                        {{link.e2dk.text}}
+                   </label>
+
+                   <div class="download-btns clearfix">
+                       <a href="{{link.thunder.url}}">
+                            {% load static %}
+                             <img src="{% static "imgs/xunlei.png" %}" alt="迅雷下载"/>
+                       </a>
+
+                       <a href="{{link.e2dk.url}}">
+                            {% load static %}
+                             <img src="{% static "imgs/emule.png" %}" alt="电驴下载"/>
+                        </a>
+                   </div>
+                   {% endif %}
+
+                   {% if link.url %}
+                   <label>
+                        <input type="checkbox" class="item_checker"/>
+                        {{link.text}}
+                   </label>
+
+                   <div class="download-btns clearfix">
+                       <a href="{{link.url}}">
+                             {% load static %}
+                             <img src="{% static "imgs/video.png" %}" alt="下载"/>
+                       </a>
+                   </div>
+                   {% endif %}
+               </li>
+            {% endfor %}
+
+            <li class="control">
+                <label>
+                    <input type="checkbox" class="check_all"> 全选
+                </label>
+
+                <a href=""><i class="fa fa-copy"></i>批量复制链接</a>
+            </li>
+        </ul>
+        {% endfor %}
     </div>
 </div>
 
@@ -100,8 +168,13 @@
         <!-- UY BEGIN -->
         <div id="uyan_frame"></div>
         <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2140138"></script>
-    <!-- UY END -->
+        <!-- UY END -->
    </div>
 </div>
 
+{% endblock %}
+
+{% block page_js %}
+    {% load static %}
+    <script type="text/javascript" src="{% static "scripts/detail/detail.js" %}"></script>
 {% endblock %}

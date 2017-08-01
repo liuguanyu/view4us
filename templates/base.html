@@ -10,6 +10,7 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
 
+    <link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     {% load static %}
     <link rel="stylesheet" href="{% static "styles/reset.css" %}"/>
     <link rel="stylesheet" href="{% static "styles/common.css" %}"/>
@@ -17,6 +18,7 @@
     <link rel="stylesheet" href="{% static "styles/header.css" %}"/>
 
     {% block page_css %}{% endblock %}
+    <link rel="stylesheet" href="{% static "styles/footer.css" %}"/>
 </head>
 <body>
     <div class="header">
@@ -69,8 +71,25 @@
     </div>
 
     <div class="footer">
+        <div class="footer-container grid-2c2 clearfix">
+            <div class="logo-container col-1">
+                <a href="/" class="logo">
+                    {% load static %}
+                    <img src="{% static "imgs/logo.png" %}" alt="LOGO"/>
+                </a>
+            </div>
 
+            <div class="copyright col-2">
+                唯悠影视 © 2017
+                <div>
+                    <a href="//www.view4us.com">www.view4us.com</a>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script src="//lib.baomitu.com/jquery/1.12.4/jquery.min.js"></script>
+    {% block page_js %}{% endblock %}
 </body>
 
 </html>

@@ -196,8 +196,6 @@ def __get_node_info(x):
 
         ret = dict(info, **ext)
 
-        print ret
-
         return ret
     except Exception, e:
         traceback.print_exc()
@@ -246,7 +244,7 @@ def get_all_page():
         return 1
 
     pages = filter(lambda x: x != "下页",
-                   map(lambda x: x.get_text().strip().encode("utf-8"), pages)
-                   )
+        map(lambda x: x.get_text().strip().encode("utf-8"), pages)
+    )
 
     return int(re.compile('第|页|,').sub("", pages[-1]).strip())

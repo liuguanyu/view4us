@@ -2,6 +2,7 @@
 
 import urllib2
 import random
+import ast
 from bs4 import BeautifulSoup
 
 import conf
@@ -40,5 +41,12 @@ def get_html(url, source_charset="utf-8"):
 def split_field_on_object(obj, fields):
     for field in fields:
         setattr(obj, field, getattr(obj, field).split(" "))
+
+    return obj
+
+
+def json_field_on_object(obj, fields):
+    for field in fields:
+        setattr(obj, field, ast.literal_eval(getattr(obj, field)))
 
     return obj

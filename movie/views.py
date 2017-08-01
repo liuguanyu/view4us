@@ -21,6 +21,7 @@ def detail(request, movie_id):
     movie = get_object_or_404(Video, pk=movie_id)
 
     movie = utils.split_field_on_object(movie, ["categories", "directors", "scripters", "performers"])
+    movie = utils.json_field_on_object(movie, ["download_urls"])
 
     return render(request, 'detail.html', {
         'movie': movie

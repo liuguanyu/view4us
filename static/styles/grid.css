@@ -13,3 +13,6 @@
 
 .grid-2c1 .col-1{width:300px;float: left;}
 .grid-2c1 .col-2{width:900px;float: left;}
+
+.grid-2c2 .col-1{width:900px;float: left;}
+.grid-2c2 .col-2{width:300px;float: left;}

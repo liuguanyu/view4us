@@ -26,6 +26,11 @@
     border-radius: 3px;
 }
 
+.insert-interesting {
+    width: 1100px;
+    margin-left: 50px;
+}
+
 .baseinfo {
     margin-left: 40px;
     height: 90px;
@@ -77,4 +82,95 @@
 .comment {
     margin: 20px auto;
     padding: 0 50px;
+}
+
+.download {
+    margin: 20px auto;
+    padding: 0 50px;
+    font-size: 14px;
+}
+
+.download_title_container{
+    margin: 10px 0 0 0;
+}
+
+.download_title {
+    float: left;
+    margin-right: 5px;
+    padding: 10px 20px 9px 20px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: none;
+    color: #999;
+}
+
+.download_title_container .current {
+    padding-bottom: 10px;
+    border-color: #1db69a;
+    border-bottom: none;
+    color: #1db69a;
+    background: #fff;
+}
+
+.links_container {
+    margin-top: -1px;
+    padding: 10px 20px;
+    border: 1px solid #1db69a;
+
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background: #fff;
+}
+
+.links_container li {
+    height: 70px;
+    line-height: 70px;
+    padding: 5px;
+    border-bottom: 1px dashed #ccc;
+    cursor: pointer;
+    color: #666;
+}
+
+.links_container :last-child {
+    border-bottom: none;
+}
+
+.links_container .control {
+    height: 20px;
+    line-height: 20px;
+}
+
+.links_container li:hover {
+    background: #eee;
+}
+
+.links_container .control:hover {
+    background: #fff;
+}
+
+
+.links_container .item_checker, .links_container .check_all{
+    margin-right: 10px;
+}
+
+.links_container .download-btns {
+    float: right;
+}
+
+.links_container .control a {
+    margin-left: 8px;
+    text-decoration: none;
+    color: #666;
+}
+
+.links_container .control i {
+    color: #267EE5;
+    margin-right: 5px;
+}
+
+.links_container .download-btns a {
+    margin-right: 10px;
+    text-decoration: none;
 }
