@@ -144,7 +144,7 @@ STATICFILES_DIRS =  [
 
 # Crontab
 CRONJOBS = [
-    # ('5 11 * * *', 'view4us.cron.get_teleplay_index'),
-    # ('5 11 * * *', 'view4us.cron.get_teleplay_detail'),
-    # ('5 11 * * *', 'view4us.cron.get_recent_item')
+    ('5 11 * * *', 'view4us.cron.get_teleplay_index'),
+    ('5 11 * * *', 'view4us.cron.get_teleplay_detail'),
+    ('5 11 * * *', 'view4us.cron.get_recent_item')
 ]

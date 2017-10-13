@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from urllib import quote
+from urllib import parse
 from view4us import utils
 
 import re
@@ -15,7 +15,7 @@ DOWNLOAD_LEADING_TEXT = "与您分享以下搜索自互联网的资源，仅供�
 
 
 def get_search_url(keyword):
-    return SEARCH_URL % quote(keyword.encode('utf-8'))
+    return SEARCH_URL % parse.quote(keyword.encode('utf-8'))
 
 
 def __get_base_info(soup):
@@ -37,7 +37,7 @@ def __get_base_info(soup):
     if content is None:
         return ret
 
-    fields = content.find("p").get_text().encode("utf-8").split("\n")
+    fields = content.find("p").get_text().split("\n")
     for line in fields:
         key, value = map(lambda x: x.strip(), line.split(":"))
 
@@ -58,7 +58,7 @@ def __get_node_type(soup):
     if span is None:
         return "movie"
 
-    text = span.get_text().encode('utf-8')
+    text = span.get_text()
 
     if re.search(r'全集', text):
         return "tv"
@@ -155,7 +155,7 @@ def __get_download_urls(soup):
 
     download_urls = []
     for title_dom in download_hint_titles:
-        title = title_dom.get_text().encode("utf-8").strip("：")
+        title = title_dom.get_text().strip("：")
 
         link_type = __get_download_code_type(title_dom)
         links = eval("__get_" + link_type + "_urls")(title_dom)
@@ -185,9 +185,10 @@ def __get_node_info(x):
     info = {}
 
     try:
-        info["title"] = x.find("h2", {"class": "title"}).find("a").get_text().encode("utf-8")
+        info["title"] = x.find("h2", {"class": "title"}).find("a").get_text()
         info["desc_url"] = x.find("h2", {"class": "title"}).find("a")["href"]
-        info["update_date"] = x.find("span", {"class": "meta_date"}).get_text().encode("utf-8").replace("更新时间：", "")
+
+        info["update_date"] = x.find("span", {"class": "meta_date"}).get_text().replace("更新时间：", "")
 
         pic = x.find("img", {"class": "wp-post-image"})
         info["pic"] = pic["data-lazy-src"] if not pic["data-lazy-src"] is None else pic["src"]
@@ -197,7 +198,7 @@ def __get_node_info(x):
         ret = dict(info, **ext)
 
         return ret
-    except Exception, e:
+    except Exception as e:
         traceback.print_exc()
         pass
 
@@ -243,8 +244,4 @@ def get_all_page():
     if pages is None or len(pages) == 0:
         return 1
 
-    pages = filter(lambda x: x != "下页",
-        map(lambda x: x.get_text().strip().encode("utf-8"), pages)
-    )
-
-    return int(re.compile('第|页|,').sub("", pages[-1]).strip())
+    return int(re.sub('第|页|,', '', pages[-2].get_text()).strip())

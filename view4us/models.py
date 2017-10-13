@@ -8,7 +8,7 @@ class Video(models.Model):
     title = models.CharField(max_length=255)
     alias = models.CharField(max_length=255)
     pic = models.URLField(max_length=255)
-    category = models.URLField(max_length=255)
+    categories = models.URLField(max_length=255)
 
     performers = models.TextField()
     directors = models.TextField()

@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
-import urllib2
+import urllib.request
 import random
 import ast
 from bs4 import BeautifulSoup
 
-import conf
+from view4us import conf
 
 
 def get_fake_headers():
@@ -21,9 +21,10 @@ def retry_http(func):
         while ret == "" and max_retry > 0:
             try:
                 ret = func(*args, **kwargs)
-            except (urllib2.HTTPError, urllib2.URLError), e:
+            except (urllib.error.HTTPError, urllib.error.URLError) as e:
                 pass
-            except Exception, e:
+            except Exception as e:
+                print(e)
                 max_retry -= 1
 
         return ret
@@ -33,8 +34,8 @@ def retry_http(func):
 
 @retry_http
 def get_html(url, source_charset="utf-8"):
-    req = urllib2.Request(url, headers=get_fake_headers())
-    source_code = urllib2.urlopen(req, timeout=10).read()
+    req = urllib.request.Request(url, headers=get_fake_headers())
+    source_code = urllib.request.urlopen(req, timeout=10).read()
     return BeautifulSoup(source_code, "lxml", from_encoding=source_charset)
 
 
